@@ -1,4 +1,4 @@
-name: /pub/medical/laboratory/4tvc-microlab/v6
+name: //pub/medical/laboratory/4tvc-microlab/v6
 desc: The latest version Microlab by Four Thieves Vinegar Collective.
 cover:
   assembly: microlab
@@ -157,7 +157,7 @@ parts:
     fileFrom: url
     fileUrl: {{ url }}/control-box/sub-components/relay-case-50x73x17mm.step
   stepdown-case:
-    desc: A case fir 12V-to-5V stepdown converter
+    desc: A case for 12V-to-5V stepdown converter
     type: step
     fileFrom: url
     fileUrl: {{ url }}/control-box/sub-components/stepdown-case-63x27x14mm.step
@@ -367,6 +367,8 @@ parts:
         bottom-right: [[86.95, 106.15, 459], [1, 0, 0], 0]
                 
   # Temperature Exchange Units
+
+    # -- Cooling unit --
   cold-unit-jar:
     desc: Jar for cooling unit
     type: cadquery
@@ -400,11 +402,50 @@ parts:
       "/pub/std/metric/m:m10-shaft":
         right: [[-15, 28, 160], [1, 0, 0], 0]
         left: [[-15, -20, 160], [1, 0, 0], 0]
+
+    # -- Heating unit --
+  hot-unit-jar:
+    desc: Jar for heating unit
+    type: cadquery
+    path: parts/mason-jar-64oz-wide-mouth.py
+    implements:
+      "m74-jar-mouth":
+        mouth: [[0, 0, 235], [1, 0, 0], 180]
+  hot-unit-jar-band:
+    desc: Jar band for heating unit
+    type: cadquery
+    path: parts/mason-jar-band-wide-mouth.py
+    implements:
+      "m74-jar-threaded-lid": [[0, 0, 5], [1, 0, 0], 180]
   hot-unit-lid:
     desc: Lid for heating unit
     type: step
     fileFrom: url
     fileUrl: {{ url }}/temperature-units/hot-unit-lid-v.1.0.step
+    implements:
+      "/pub/std/metric/m:m10-thru":
+        left-outer: [[-24, 0, 0], [1, 0, 0], 0]
+        right-outer: [[24, 0, 0], [1, 0, 0], 0]
+        # TODO: should be another (rectangular) one
+        center: [[0, -7, 5], [0, 0, 1], 90]
+      "m74-jar-closing":
+        bottom: [[0, 0, 4], [1, 0, 0], 180]
+  hot-unit-tube:
+    desc: Spiral tube for heating unit
+    type: cadquery
+    # fileFrom: url
+    # fileUrl: {{ url }}/temperature-units/cold-unit-tube-v.0.3.step
+    path: parts/hot-unit-tube.py
+    implements:
+      "/pub/std/metric/m:m10-shaft":
+        left: [[-36, -12, 190], [0, 0, 1], -90]
+        right: [[12, -12, 190], [0, 0, 1], -90]
+  hot-unit-heater:
+    desc: Immersion heater of heating unit
+    type: step
+    path: immersion-heater.step
+    implements:
+      "/pub/std/metric/m:m10-shaft": [[12, 0, 0], [0, 0, 1], 180]
 
 assemblies:
   microlab:
