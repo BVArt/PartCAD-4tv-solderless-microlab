@@ -14,12 +14,14 @@ links:
     connect:
       # TODO: attention, there is a gap between parts for other 2 holes,
       # we might need to properly take this into account
+      with: /pub/std/metric/m:m3-thru
       withInstance: back-inner
+      to: /pub/std/metric/m:m3-hole-10
       toInstance: side-back
       name: manifold-core
   
-  {% for side in ['back', 'left', 'right'] %}
-    # TODO: parameterize screw type
+{% for side in ['back', 'left', 'right'] %}
+  # TODO: parameterize screw type
   - part: /pub/std/metric/cqwarehouse:fastener/raisedcheesehead-iso7045
     name: {{ side }}-screw-manifold-lid
     params:
@@ -28,18 +30,20 @@ links:
     connect:
       toInstance: {{ side }}-outer
       name: manifold-lid
-  {% endfor %}
+{% endfor %}
 
   - part: reactor-core-stir-rod-mount
     name: stir-rod-mount
     connect:
-      # TODO: there is a small offset (see bottom view),
-      # this needs to be handled
+    # TODO: there is a small offset (see bottom view),
+    # this needs to be handled
+      with: /pub/std/metric/m:m3-hole-20
       withInstance: bottom-back
+      to: /pub/std/metric/m:m3-hole-20
       toInstance: top-back
       name: manifold-core
   
-  {% for side in ['back', 'left', 'right'] %}
+{% for side in ['back', 'left', 'right'] %}
     # TODO: parameterize screw type
   - part: /pub/std/metric/cqwarehouse:fastener/raisedcheesehead-iso7045
     name: {{ side }}-screw-stir-rod-mount
@@ -49,9 +53,9 @@ links:
     connect:
       toInstance: upper-{{ side }}
       name: stir-rod-mount
-  {% endfor %}
+{% endfor %}
 
-  # TODO: motor, coupler, stirring rod (most probably another assembly)
+# TODO: motor, coupler, stirring rod (most probably another assembly)
 
   - part: reactor-core-inner-jar
     name: inner-jar
