@@ -55,7 +55,26 @@ links:
       name: stir-rod-mount
 {% endfor %}
 
-# TODO: motor, coupler, stirring rod (most probably another assembly)
+  - part: stir-rod-motor
+    name: stir-rod-motor
+    connect:
+      withInstance: body
+      toInstance: motor-seat
+      name: stir-rod-mount
+
+  - part: stir-rod-coupler
+    name: stir-rod-coupler
+    connect:
+      withInstance: motor-side
+      toInstance: shaft
+      name: stir-rod-motor
+
+  - part: stir-rod
+    name: stir-rod
+    connect:
+      withInstance: coupler-end
+      toInstance: rod-side
+      name: stir-rod-coupler
 
   - part: reactor-core-inner-jar
     name: inner-jar

@@ -19,7 +19,7 @@ docs:
 {% set url = url_prefix + '/v6' %}
 
 {% set sizes = [46, 60, 74, 80] %}
-{% set sketch_sizes = [45, 46, 59, 60, 73, 74, 79, 80] %}
+{% set sketch_sizes = [3, 6, 13, 45, 46, 59, 60, 73, 74, 79, 80] %}
 
 sketches:
   {% for size in sketch_sizes %}
@@ -35,6 +35,28 @@ sketches:
       circle: 3
 
 interfaces:
+  {% for size in [3, 6, 13] %}
+  m{{ size }}:
+    desc: Abstract {{ size }} mm circular interface
+    abstract: True
+    ports:
+      m{{ size }}:
+        location: [[0, 0, 0], [0, 0, 1], 0]
+        sketch: m{{ size }}
+
+  m{{ size }}-opening:
+    desc: Abstract {{ size }} mm circular opening
+    inherits:
+      m{{ size }}: opening
+
+  m{{ size }}-shaft:
+    desc: Abstract {{ size }} mm shaft
+    inherits:
+      m{{ size }}: shaft
+    mates:
+      - m{{ size }}-opening
+  {% endfor %}
+
   {% for size in sizes %}
   m{{ size }}:
     desc: Abstract {{ size }} mm circular interface
@@ -358,6 +380,9 @@ parts:
     fileFrom: url
     fileUrl: {{ url }}/reactor-manifold/stirring-mount-v0.1.step
     implements:
+      # Approximate center of the motor bore, derived from the mount screw pattern.
+      "m13-opening":
+        motor-seat: [[80.5, 117, 464], [1, 0, 0], 0]
       "/pub/std/metric/m:m3-hole-20":
         upper-back: [[67.85, 116.85, 469], [1, 0, 0], 180]
         upper-left: [[86.7, 128, 469], [1, 0, 0], 180]
@@ -365,10 +390,34 @@ parts:
         bottom-back: [[67.85, 116.85, 459], [1, 0, 0], 0]
         bottom-left: [[86.7, 128, 459], [1, 0, 0], 0]
         bottom-right: [[86.95, 106.15, 459], [1, 0, 0], 0]
-                
-  # Temperature Exchange Units
+  stir-rod-motor:
+    desc: Stir rod DC gearmotor
+    type: cadquery
+    path: parts/stir-rod-motor.py
+    implements:
+      "m13-shaft":
+        body: [[0, 0, 18], [0, 0, 1], 0]
+      "m3-shaft":
+        shaft: [[0, 0, 0], [0, 0, 1], 0]
+  stir-rod-coupler:
+    desc: Shaft coupler between the stir rod motor and stir rod
+    type: cadquery
+    path: parts/stir-rod-coupler.py
+    implements:
+      "m3-opening":
+        motor-side: [[0, 0, 0], [0, 0, 1], 180]
+      "m6-opening":
+        rod-side: [[0, 0, -20], [0, 0, 1], 0]
+  stir-rod:
+    desc: PTFE-coated stir rod and paddle
+    type: cadquery
+    path: parts/stir-rod.py
+    implements:
+      "m6-shaft":
+        coupler-end: [[0, 0, 0], [0, 0, 1], 0]
 
-    # -- Cooling unit --
+  # Temperature Exchange Units
+  # -- Cooling unit --
   cold-unit-jar:
     desc: Jar for cooling unit
     type: cadquery
