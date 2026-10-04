@@ -15,9 +15,7 @@ docs:
     both PartCAD and this package, but do not yet use this package
     for manufacturing or ordering Microlab parts.*
 
-{% set repo = "https://raw.githubusercontent.com/openvmp/forked-FourThievesVinegar-microlab-parts/" %}
-{% set revision = "3d1371d9f2ba293ec7beb92ac84288c4f80e06ac" %}
-{% set url_prefix = repo + revision %}
+{% from 'urls.j2' import repo, revision, url_prefix %}
 {% set url = url_prefix + '/v6' %}
 
 {% set sizes = [46, 60, 74, 80] %} 
@@ -403,6 +401,10 @@ parts:
     fileUrl: {{ url }}/temperature-units/hot-unit-lid-v.1.0.step
 
 assemblies:
+  test-shaft-to-opening:
+    type: assy
+    path: test-shaft-to-opening.assy
+    desc: Validation assembly for m46 shaft-to-opening connection
   microlab:
     type: assy
     path: microlab.assy
@@ -434,15 +436,15 @@ assemblies:
         default: raisedcountersunkovalhead-iso7047
     implements:
       "m46-opening":
-        opening: [[0, 0, 0], [1, 0, 0], 0]
+        opening: [[94, 94, 155.5], [1, 0, 0], 90]
   reactor-unit-reactor-stand:
     type: assy
     path: reactor-unit-reactor-stand.assy
     implements:
-      "m46-shaft":
-        shaft: [[4, 96, 132.5], [1, 0, 0], 0]
       "m80-opening":
         core-holder: [[98, 22, 155.5], [1, 0, 0], 0]
+      "m46-shaft":
+        shaft: [[98, 100, 155.5], [-1, 0, 0], 90]
   reactor-unit-reactor-core:
     type: assy
     path: reactor-unit-reactor-core.assy

@@ -1,0 +1,15 @@
+# Validation assembly for m46 shaft-to-opening connection
+# Tests that reactor-stand shaft inserts correctly into pumps-box opening
+
+links:
+  - assembly: reactor-unit-reactor-stand
+    name: stand
+
+  - assembly: reactor-unit-pumps-box
+    name: pumps-box
+    connect:
+      with: m46-opening
+      withInstance: opening
+      to: m46-shaft
+      toInstance: shaft
+      name: stand
