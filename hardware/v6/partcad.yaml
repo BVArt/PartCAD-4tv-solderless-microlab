@@ -57,7 +57,7 @@ interfaces:
     ports:
       m{{ size }}-threaded:
         location: [[0, 0, 0], [0, 0, 1], 0] # redundant, for demonstration
-        sketch: m{{ size - 1}}
+        sketch: m{{ size }}
 
   m{{ size }}-jar-threaded-lid:
     # TODO: desc: ...
