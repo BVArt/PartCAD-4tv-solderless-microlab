@@ -432,15 +432,15 @@ assemblies:
         default: raisedcountersunkovalhead-iso7047
     implements:
       "m46-opening":
-        pumps-box-receiver: [[0, 0, 0], [1, 0, 0], 0]
+        opening: [[0, 0, 0], [1, 0, 0], 0]
   reactor-unit-reactor-stand:
     type: assy
     path: reactor-unit-reactor-stand.assy
     implements:
+      "m46-shaft":
+        shaft: [[4, 96, 132.5], [1, 0, 0], 0]
       "m80-opening":
         core-holder: [[98, 22, 155.5], [1, 0, 0], 0]
-      "m46-shaft":
-        pumps-box-mount: [[4, 96, 132.5], [1, 0, 0], 0]
   reactor-unit-reactor-core:
     type: assy
     path: reactor-unit-reactor-core.assy
