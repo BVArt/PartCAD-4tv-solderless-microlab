@@ -90,6 +90,12 @@ interfaces:
       m{{ size }}-threaded-shaft: jar-top
   {% endfor %}
 
+  pumps-box-mount:
+    desc: Mounting interface for pumps-box on reactor-stand
+    ports:
+      mount:
+        location: [[0, 0, 0], [1, 0, 0], 0]
+
 parts:
   # Control Unit
   control-box:
@@ -430,12 +436,17 @@ assemblies:
         desc: Type of the screws attaching lid to the pumps box
         enum: [raisedcountersunkovalhead-iso7047, raisedcheesehead-iso7045]
         default: raisedcountersunkovalhead-iso7047
+    implements:
+      "pumps-box-mount":
+        mount: [[0, 0, 0], [1, 0, 0], 0]
   reactor-unit-reactor-stand:
     type: assy
     path: reactor-unit-reactor-stand.assy
     implements:
       "m80-opening":
         core-holder: [[98, 22, 155.5], [1, 0, 0], 0]
+      "pumps-box-mount":
+        pumps-box: [[4, 96, 132.5], [1, 0, 0], 0]
   reactor-unit-reactor-core:
     type: assy
     path: reactor-unit-reactor-core.assy
