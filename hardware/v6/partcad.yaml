@@ -90,10 +90,15 @@ interfaces:
       m{{ size }}-threaded-shaft: jar-top
   {% endfor %}
 
-  pumps-box-mount:
-    desc: Structural mounting interface for pumps-box assembly on reactor-stand
+  pumps-box-mount-stand:
+    desc: M60 shaft mounting point on reactor-stand for pumps-box
     inherits:
-      "m60": mount
+      "m60-shaft": mount
+
+  pumps-box-mount-receiver:
+    desc: M60 opening receiver on pumps-box assembly for mounting to stand
+    inherits:
+      "m60-opening": mount
 
 parts:
   # Control Unit
@@ -436,7 +441,7 @@ assemblies:
         enum: [raisedcountersunkovalhead-iso7047, raisedcheesehead-iso7045]
         default: raisedcountersunkovalhead-iso7047
     implements:
-      "pumps-box-mount":
+      "pumps-box-mount-receiver":
         mount: [[0, 0, 0], [1, 0, 0], 0]
   reactor-unit-reactor-stand:
     type: assy
@@ -444,8 +449,8 @@ assemblies:
     implements:
       "m80-opening":
         core-holder: [[98, 22, 155.5], [1, 0, 0], 0]
-      "pumps-box-mount":
-        pumps-box: [[4, 96, 132.5], [1, 0, 0], 0]
+      "pumps-box-mount-stand":
+        mount: [[4, 96, 132.5], [1, 0, 0], 0]
   reactor-unit-reactor-core:
     type: assy
     path: reactor-unit-reactor-core.assy
