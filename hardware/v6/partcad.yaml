@@ -436,7 +436,7 @@ assemblies:
         default: raisedcountersunkovalhead-iso7047
     implements:
       "m46-opening":
-        opening: [[94, 94, 155.5], [1, 0, 0], 90]
+        opening: [[98, 100, 155.5], [1, 0, 0], 90]
   reactor-unit-reactor-stand:
     type: assy
     path: reactor-unit-reactor-stand.assy
