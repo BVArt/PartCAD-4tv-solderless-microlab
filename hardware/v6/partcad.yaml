@@ -1,4 +1,4 @@
-name: /pub/medical/laboratory/4tvc-microlab/v6
+name: //pub/medical/laboratory/4tvc-microlab/v6
 desc: The latest version Microlab by Four Thieves Vinegar Collective.
 cover:
   assembly: microlab
@@ -15,7 +15,9 @@ docs:
     both PartCAD and this package, but do not yet use this package
     for manufacturing or ordering Microlab parts.*
 
-{% from '../urls.j2' import url_prefix %}
+{% set repo = "https://raw.githubusercontent.com/openvmp/forked-FourThievesVinegar-microlab-parts/" %}
+{% set revision = "3d1371d9f2ba293ec7beb92ac84288c4f80e06ac" %}
+{% set url_prefix = repo + revision %}
 {% set url = url_prefix + '/v6' %}
 
 {% set sizes = [46, 60, 74, 80] %} 
