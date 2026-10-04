@@ -91,10 +91,9 @@ interfaces:
   {% endfor %}
 
   pumps-box-mount:
-    desc: Mounting interface for pumps-box on reactor-stand
-    ports:
-      mount:
-        location: [[0, 0, 0], [1, 0, 0], 0]
+    desc: Structural mounting interface for pumps-box assembly on reactor-stand
+    inherits:
+      "m60": mount
 
 parts:
   # Control Unit
