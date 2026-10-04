@@ -91,14 +91,14 @@ interfaces:
   {% endfor %}
 
   pumps-box-mount-stand:
-    desc: M60 shaft mounting point on reactor-stand for pumps-box
+    desc: M24 shaft mounting point on reactor-stand for pumps-box
     inherits:
-      "m60-shaft": mount
+      "m24-shaft": mount
 
   pumps-box-mount-receiver:
-    desc: M60 opening receiver on pumps-box assembly for mounting to stand
+    desc: M24 opening receiver on pumps-box assembly for mounting to stand
     inherits:
-      "m60-opening": mount
+      "m24-opening": mount
 
 parts:
   # Control Unit
