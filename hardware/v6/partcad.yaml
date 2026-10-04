@@ -15,7 +15,7 @@ docs:
     both PartCAD and this package, but do not yet use this package
     for manufacturing or ordering Microlab parts.*
 
-{% from 'urls.j2' import url_prefix %}
+{% from '../urls.j2' import url_prefix %}
 {% set url = url_prefix + '/v6' %}
 
 {% set sizes = [46, 60, 74, 80] %} 
