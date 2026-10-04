@@ -5,8 +5,8 @@ links:
   - assembly: reactor-unit-pumps-box
     name: pumps-box
     connect:
-      withInstance: mount
-      toInstance: mount
+      withInstance: pumps-box-receiver
+      toInstance: pumps-box-mount
       name: reactor-stand
 
   - assembly: reactor-unit-reactor-core
