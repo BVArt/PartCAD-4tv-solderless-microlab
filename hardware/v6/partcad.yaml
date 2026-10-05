@@ -450,7 +450,7 @@ assemblies:
     path: reactor-unit-reactor-core.assy
     implements:
       "m80-shaft":
-        stand-neck: [[0, 0, -29], [1, 0, 0], 0]
+        stand-neck: [[0, 0, -75], [1, 0, 0], 180]
   reactor-unit:
     type: assy
     path: reactor-unit.assy
