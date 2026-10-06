@@ -325,7 +325,7 @@ parts:
       # together with 2 flanges
       "m80-shaft":
         neck-lower: [[0, 0, 140], [0, 0, 1], 180]
-        neck-upper: [[0, 0, 150.5], [0, 0, 1], 180]  
+        neck-upper: [[0, 0, 152], [0, 0, 1], 180]  
   reactor-core-outer-jar-band:
     desc: Band for bigger/outer jar of Reactor core
     type: cadquery
@@ -401,10 +401,6 @@ parts:
     fileUrl: {{ url }}/temperature-units/hot-unit-lid-v.1.0.step
 
 assemblies:
-  test-shaft-to-opening:
-    type: assy
-    path: test-shaft-to-opening.assy
-    desc: Validation assembly for m46 shaft-to-opening connection
   microlab:
     type: assy
     path: microlab.assy
@@ -442,7 +438,7 @@ assemblies:
     path: reactor-unit-reactor-stand.assy
     implements:
       "m80-opening":
-        core-holder: [[98, 22, 155.5], [1, 0, 0], 0]
+        core-holder: [[98, 22, 156], [1, 0, 0], 0]
       "m46-shaft":
         shaft: [[98, 100, 155.5], [-1, 0, 0], 90]
   reactor-unit-reactor-core:
@@ -450,7 +446,7 @@ assemblies:
     path: reactor-unit-reactor-core.assy
     implements:
       "m80-shaft":
-        stand-neck: [[0, 0, -75], [1, 0, 0], 180]
+        stand-neck: [[0, 0, -73], [1, 0, 0], 180]
   reactor-unit:
     type: assy
     path: reactor-unit.assy
@@ -460,6 +456,9 @@ assemblies:
   cooling-unit:
     type: assy
     path: cooling-unit.assy
+  test-reactor-stand-core:
+    type: assy
+    path: test-reactor-stand-core.assy
 
 render:
   svg:
