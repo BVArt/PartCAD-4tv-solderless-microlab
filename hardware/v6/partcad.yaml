@@ -320,7 +320,7 @@ parts:
     type: cadquery
     path: parts/mason-jar-32oz-wide-mouth.py
     implements:
-      "m74-jar-threaded-top": [[0, 0, 165], [1, 0, 0], 180]
+      "m74-jar-threaded-top": [[0, 0, 165], [1, 0, 0], 0]
       # TODO: most probably this should be a new "shimmed" interface
       # together with 2 flanges
       "m80-shaft":
@@ -446,7 +446,7 @@ assemblies:
     path: reactor-unit-reactor-core.assy
     implements:
       "m80-shaft":
-        stand-neck: [[0, 0, -73], [1, 0, 0], 180]
+        stand-neck: [[0, 0, -35], [1, 0, 0], 0]
   reactor-unit:
     type: assy
     path: reactor-unit.assy
@@ -456,9 +456,6 @@ assemblies:
   cooling-unit:
     type: assy
     path: cooling-unit.assy
-  test-reactor-stand-core:
-    type: assy
-    path: test-reactor-stand-core.assy
 
 render:
   svg:
