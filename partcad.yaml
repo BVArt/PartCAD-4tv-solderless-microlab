@@ -16,7 +16,7 @@ docs:
     both PartCAD and this package, but do not yet use this package
     for manufacturing or ordering Microlab parts.*
 
-import:
+dependencies:
   pub:
     onlyInRoot: True
     type: git
